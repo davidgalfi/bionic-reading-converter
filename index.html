@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionic Reading Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-container label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        input[type="range"] {
+            width: 150px;
+        }
+
+        .output {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 150px;
+            font-size: 18px;
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+
+        .bionic {
+            font-weight: 700;
+        }
+
+        .info {
+            background: #e8eaf6;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bionic Reading Converter</h1>
+        <p class="subtitle">Transform your text for faster, easier reading</p>
+
+        <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+
+        <div class="controls">
+            <button onclick="convertText()">Convert to Bionic</button>
+            <button onclick="copyOutput()" style="background: #764ba2;">Copy Result</button>
+            <div class="slider-container">
+                <label for="boldRatio">Bold ratio:</label>
+                <input type="range" id="boldRatio" min="30" max="70" value="50" step="5">
+                <span id="ratioValue">50%</span>
+            </div>
+        </div>
+
+        <div class="output" id="output">
+            <span style="color: #999;">Your bionic text will appear here...</span>
+        </div>
+
+        <div class="info">
+            <strong>How it works:</strong> Bionic reading highlights the first part of each word, guiding your eyes and helping your brain complete the word faster. This reduces eye movement and cognitive load, making reading less tiring.
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
